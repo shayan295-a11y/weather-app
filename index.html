@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nimbus — Weather</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="particles" id="particles"></div>
+<div class="lightning" id="lightning"></div>
+
+<div class="container">
+  <header>
+    <div class="logo">Nimbus <span>Weather</span></div>
+  </header>
+
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search city — Paris, Tokyo, Lagos…" autocomplete="off" />
+    <button class="search-btn" onclick="searchWeather()">Search</button>
+  </div>
+
+  <div class="quick-cities" id="quickCities">
+    <button class="quick-btn" onclick="fetchWeather('Lahore')">Lahore</button>
+    <button class="quick-btn" onclick="fetchWeather('London')">London</button>
+    <button class="quick-btn" onclick="fetchWeather('New York')">New York</button>
+    <button class="quick-btn" onclick="fetchWeather('Tokyo')">Tokyo</button>
+    <button class="quick-btn" onclick="fetchWeather('Dubai')">Dubai</button>
+    <button class="quick-btn" onclick="fetchWeather('Sydney')">Sydney</button>
+  </div>
+
+  <div class="error-msg" id="errorMsg">City not found. Please try a different name.</div>
+
+  <!-- Main card -->
+  <div class="weather-card" id="weatherCard">
+    <div class="city-name" id="cityName">—</div>
+    <div class="city-meta">
+      <span id="countryName">—</span>
+      <span class="dot">·</span>
+      <span id="localTime">—</span>
+    </div>
+
+    <div class="unit-toggle">
+      <button class="unit-btn active" id="btnC" onclick="setUnit('C')">°C</button>
+      <button class="unit-btn" id="btnF" onclick="setUnit('F')">°F</button>
+    </div>
+
+    <div class="main-row">
+      <div>
+        <div class="temperature"><span id="tempVal">—</span><span class="unit" id="unitLabel">°C</span></div>
+        <div class="feels-like">Feels like <span id="feelsVal">—</span></div>
+      </div>
+      <div class="weather-icon-wrap">
+        <div class="weather-icon" id="weatherIcon">—</div>
+        <div class="weather-desc" id="weatherDesc">—</div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">💧 Humidity</div>
+        <div class="stat-value" id="humidity">—</div>
+        <div class="stat-sub" id="humidityDesc">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">🌬 Wind</div>
+        <div class="stat-value" id="wind">—</div>
+        <div class="stat-sub" id="windDir">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">👁 Visibility</div>
+        <div class="stat-value" id="visibility">—</div>
+        <div class="stat-sub" id="visDesc">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">📊 Pressure</div>
+        <div class="stat-value" id="pressure">—</div>
+        <div class="stat-sub" id="pressDesc">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">🌅 Sunrise</div>
+        <div class="stat-value" id="sunrise">—</div>
+        <div class="stat-sub">local time</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">🌇 Sunset</div>
+        <div class="stat-value" id="sunset">—</div>
+        <div class="stat-sub">local time</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Forecast card -->
+  <div class="forecast-card" id="forecastCard">
+    <div class="forecast-label">5-Day Forecast</div>
+    <div class="forecast-strip" id="forecastStrip"></div>
+  </div>
+
+  <div class="footer">
+    Powered by OpenWeatherMap · Data updates every 10 min
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
